@@ -15,8 +15,8 @@ const App = () => {
     <NavigationContainer>
       {hideSplashScreen ? (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="ProductCard" component={ProductCard} />
           <Stack.Screen name="OrderPage" component={OrderPage} />
+          <Stack.Screen name="ProductCard" component={ProductCard} />
         </Stack.Navigator>
       ) : null}
     </NavigationContainer>
