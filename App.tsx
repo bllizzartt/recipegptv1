@@ -4,6 +4,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import ProductCard from "./screens/ProductCard";
 import OrderPage from "./screens/OrderPage";
+import CategoryPage from "./screens/CategoryPage";
+
 
 
 const Stack = createNativeStackNavigator();
@@ -16,6 +18,7 @@ const App = () => {
       {hideSplashScreen ? (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="OrderPage" component={OrderPage} />
+          <Stack.Screen name="CategoryPage" component={CategoryPage} />
           <Stack.Screen name="ProductCard" component={ProductCard} />
         </Stack.Navigator>
       ) : null}

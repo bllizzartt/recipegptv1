@@ -14,30 +14,15 @@ const RectangleComponent = () => {
       <View style={styles.line} />
       <Text style={styles.price}>Chicken Breast 6oz</Text>
       </ScrollView>
-
-      {/* Footer section with icons and text */}
+      {/* footer section */}
       <View style={styles.footer}>
-        <View style={styles.footerItem}>
-          <Image source={require('../images/home-emblem.png')} style={styles.footerIcon} />
-          <Text style={styles.footerText}>Home</Text>
-        </View>
-        {/* <View style={styles.footerItem}>
-          <Image source={require('../images/salesIcon.png')} style={styles.footerIcon} />
-          <Text style={styles.footerText}>Sales</Text>
-        </View>
-        <View style={styles.footerItem}>
-          <Image source={require('../images/ordersIcon.png')} style={styles.footerIcon} />
-          <Text style={styles.footerText}>Orders</Text>
-        </View>
-        <View style={styles.footerItem}>
-          <Image source={require('../images/productsIcon.png')} style={styles.footerIcon} />
-          <Text style={styles.footerText}>Products</Text>
-        </View>
-        <View style={styles.footerItem}>
-          <Image source={require('../images/listIcon.png')} style={styles.footerIcon} />
-          <Text style={styles.footerText}>List</Text>
-        </View> */}
+      <View style={styles.bottomRectangle}>
+        <Text style={styles.listText}>Add to list</Text>
       </View>
+      <TouchableOpacity style={styles.buttonRectangle}>
+        <Text style={styles.buttonText}>RecipeGPT</Text>
+      </TouchableOpacity>
+    </View>
     </View>
   );
 };
@@ -120,27 +105,36 @@ const styles = StyleSheet.create({
     flex: 1, // Ensures the ScrollView takes up the available space
   },
   footer: {
-    position: 'absolute',
-    bottom: 0,
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
-    width: '100%',
+    position: 'absolute', // Positions the footer absolutely within the container
+    bottom: 0, // Adjust this value to move the footer up. Increase to move up, decrease to move down
+    width: 430,
     height: 115,
+    paddingVertical: 14,
+    paddingHorizontal: 17,
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: '#FFF',
+    alignSelf: 'center', // Centers the footer horizontally
   },
-  footerItem: {
-    alignItems: 'center', // Center the icon and text vertically
+  bottomRectangle: {
+    width: 395,
+    paddingVertical: 7,
+    paddingHorizontal: 41,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: '#004D35',
+    borderWidth: 1,
+    marginBottom: 10, // Added for spacing between the rectangles
   },
-  footerIcon: {
-    width: 30,
-    height: 30,
-    resizeMode: 'contain',
-  },
-  footerText: {
-    color: '#000',
-    fontSize: 12, // Adjust as needed
-    marginTop: 5, // Space between the icon and the text
+  buttonRectangle: {
+    width: 395,
+    paddingVertical: 7,
+    paddingHorizontal: 41,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: '#004D35',
+    borderWidth: 1,
+    backgroundColor: '#004D35',
   },
   listText: {
     color: '#000', // Text color for the first rectangle

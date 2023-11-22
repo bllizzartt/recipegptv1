@@ -28,7 +28,7 @@ const SimplePage = () => {
         <Text style={styles.primeText}>Mouthwatering spreads for your group. Preorder 48 hours ahead.</Text>
         <Text style={styles.amazonText}>Preorder Now</Text>
         <Image 
-            source={require('../images/firstImage.png')} // Update the path to your image
+            source={require('../images/foodTray.png')} // Update the path to your image
             style={styles.boxImage}
           />
       </View>
@@ -38,7 +38,7 @@ const SimplePage = () => {
         <Text style={styles.primeText}>Freshly made sandwhiches and more. Order and enjoy same day. Available in select stores.</Text>
         <Text style={styles.amazonText}>Order Now</Text>
         <Image 
-            source={require('../images/firstImage.png')} // Update the path to your image
+            source={require('../images/pizzaImage.png')} // Update the path to your image
             style={styles.boxImage}
           />
       </View>
@@ -48,7 +48,7 @@ const SimplePage = () => {
         <Text style={styles.primeText}>Freshly made sandwhiches and more. Order and enjoy same day. Available in select stores.</Text>
         <Text style={styles.amazonText}>Order Now</Text>
         <Image 
-            source={require('../images/firstImage.png')} // Update the path to your image
+            source={require('../images/boxImage.png')} // Update the path to your image
             style={styles.boxImage}
           />
       </View>
@@ -60,15 +60,15 @@ const SimplePage = () => {
         <View style={styles.footerItem}>
           <Image source={require('../images/salesIcon.png')} style={styles.footerIcon} />
         </View>
-        {/* <View style={styles.footerItem}>
-          <Image source={require('../images/icon3.png')} style={styles.footerIcon} />
+        <View style={styles.footerItem}>
+          <Image source={require('../images/orderIcon.png')} style={styles.footerIcon} />
         </View>
         <View style={styles.footerItem}>
-          <Image source={require('../images/icon4.png')} style={styles.footerIcon} />
+          <Image source={require('../images/productsIcon.png')} style={styles.footerIcon} />
         </View>
         <View style={styles.footerItem}>
-          <Image source={require('../images/icon5.png')} style={styles.footerIcon} />
-        </View> */}
+          <Image source={require('../images/listIcon.png')} style={styles.footerIcon} />
+        </View>
       </View>
     </View>
   );
@@ -204,8 +204,8 @@ const styles = StyleSheet.create({
     alignItems: 'center', // Center the icon horizontally
   },
   footerIcon: {
-    width: 30, // Adjust the size as needed
-    height: 30, // Adjust the size as needed
+    width: 70, // Adjust the size as needed
+    height: 70, // Adjust the size as needed
     resizeMode: 'contain',
   },
   // ... other styles remain the same
