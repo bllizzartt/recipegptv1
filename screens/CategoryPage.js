@@ -11,8 +11,15 @@ const RectangleComponent = () => {
         />
       <View style={styles.greenRectangle} />
       <View style={styles.rectangle} />
-      <ScrollView style={styles.scrollView}>
-      </ScrollView>
+      <View style={styles.newRectangle}>
+      <Image
+          source={require('../images/boxVector.png')} // Path to your converted SVG image
+          style={styles.svgImage}
+        />
+        <Text style={styles.shippingText}>Shipping to</Text>
+        <Text style={styles.locationText}>New York, 10001</Text>
+        <Text style={styles.category}>Shop By Category</Text>
+      </View>
     </View>
   );
 };
@@ -53,6 +60,58 @@ const styles = StyleSheet.create({
     left: 100, // Adjust this value as needed
     resizeMode: 'cover',
     zIndex: 2, // Higher zIndex to be on top of greenRectangle
+  },
+  newRectangle: {
+    width: 430,
+    height: 63,
+    flexShrink: 0,
+    backgroundColor: '#F8F7F5',
+    position: 'absolute',
+    top: 200, // Adjust this value to position the rectangle correctly
+    left: 0, // Adjust this value to position the rectangle correctly
+    zIndex: 1, // Ensure it's layered correctly
+  },
+  svgImage: {
+    width: 25, // Adjusted width
+    height: 25, // Adjusted height
+    top: 20, // Adjust this value to position the rectangle correctly
+    left: 20, // Adjust this value to position the rectangle correctly
+    zIndex: 1, // Ensure it's layered correctly
+  },
+  shippingText: {
+    color: '#575757',
+    fontFamily: 'SFProText',
+    fontSize: 12,
+    fontStyle: 'normal',
+    fontWeight: '500',
+    lineHeight: 14,
+    letterSpacing: -0.48,
+    textAlign: 'left', // Aligns text to the left
+    marginLeft: 50, // Adjust as needed to space it from the SVG
+  },
+  locationText: {
+    color: '#2D2D2B',
+    textAlign: 'center',
+    fontFamily: 'SFProText',
+    fontSize: 14,
+    fontStyle: 'normal',
+    fontWeight: '700',
+    lineHeight: 16, // React Native requires numeric line height
+    letterSpacing: -0.56,
+    textAlign: 'left', // Aligns text to the left
+    marginLeft: 50, // Adjust as needed to space it from the SVG
+  },
+  category: {
+    color: '#000',
+    textAlign: 'center',
+    // fontFamily: 'Source Serif 4', // Uncomment this if the font is added to your project
+    fontSize: 22.698,
+    fontStyle: 'normal',
+    fontWeight: '600',
+    lineHeight: 24, // Adjust as needed
+    top: 30, // Adjust this value to position the rectangle correctly
+    left: -100, // Adjust this value to position the rectangle correctly
+    zIndex: 1, // Ensure it's layered correctly
   },
 });
 
