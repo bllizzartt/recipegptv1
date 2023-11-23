@@ -2,6 +2,9 @@ import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, ScrollView, Image } from 'react-native';
 
 const RectangleComponent = () => {
+  const categoriesFirstRow = ['Essentials', 'Meats', 'Produce', 'Beverages'];
+  const categoriesSecondRow = ['Category 5', 'Category 6', 'Category 7', 'Category 8']; // Replace with your categories
+
   
   return (
     <View style={styles.container}>
@@ -19,6 +22,47 @@ const RectangleComponent = () => {
         <Text style={styles.shippingText}>Shipping to</Text>
         <Text style={styles.locationText}>New York, 10001</Text>
         <Text style={styles.category}>Shop By Category</Text>
+      </View>
+      <View style={styles.buttonContainer}>
+          {categoriesFirstRow.map((item, index) => (
+            <TouchableOpacity key={index} style={styles.categoryButton}>
+            <Image
+                source={require(`../images/boxVector.png`)} // Update path to your images
+                style={styles.buttonImage}
+              />
+            <Text style={styles.buttonText}>{item}</Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+
+        <View style={styles.buttonContainer2}>
+          {categoriesSecondRow.map((item, index) => (
+            <TouchableOpacity key={index} style={styles.categoryButton}>
+              <Image
+                source={require(`../images/boxVector.png`)} // Update path to your images
+                style={styles.buttonImage}
+              />
+              <Text style={styles.buttonText}>{item}</Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+        {/* Footer section with evenly spaced images */}
+      <View style={styles.footer}>
+        <View style={styles.footerItem}>
+          <Image source={require('../images/homeIcon.png')} style={styles.footerIcon} />
+        </View>
+        <View style={styles.footerItem}>
+          <Image source={require('../images/salesIcon.png')} style={styles.footerIcon} />
+        </View>
+        <View style={styles.footerItem}>
+          <Image source={require('../images/orderIcon.png')} style={styles.footerIcon} />
+        </View>
+        <View style={styles.footerItem}>
+          <Image source={require('../images/productsIcon.png')} style={styles.footerIcon} />
+        </View>
+        <View style={styles.footerItem}>
+          <Image source={require('../images/listIcon.png')} style={styles.footerIcon} />
+        </View>
       </View>
     </View>
   );
@@ -112,6 +156,52 @@ const styles = StyleSheet.create({
     top: 30, // Adjust this value to position the rectangle correctly
     left: -100, // Adjust this value to position the rectangle correctly
     zIndex: 1, // Ensure it's layered correctly
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    width: '100%',
+    marginTop: 200,
+  },
+  buttonContainer2: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    width: '100%',
+    marginTop: 100,
+  },
+  categoryButton: {
+    alignItems: 'center',
+  },
+  buttonImage: {
+    width: 50,
+    height: 50,
+    resizeMode: 'contain',
+  },
+  buttonText: {
+    marginTop: 5,
+  },
+  
+  // Footer section
+  footer: {
+    position: 'absolute',
+    bottom: 0,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+    height: 115,
+    backgroundColor: '#FFF',
+  },
+  footerItem: {
+    flex: 1, // Each item takes equal space
+    alignItems: 'center', // Center the icon horizontally
+  },
+  footerIcon: {
+    width: 70, // Adjust the size as needed
+    height: 70, // Adjust the size as needed
+    resizeMode: 'contain',
   },
 });
 
