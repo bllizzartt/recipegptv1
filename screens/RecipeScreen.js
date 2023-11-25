@@ -1,65 +1,17 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 import { PixelRatio } from 'react-native';
-import { useNavigation } from '@react-navigation/native'; // Import useNavigation
-
 
 const pixelWidth = PixelRatio.getPixelSizeForLayoutSize(398);
 const pixelHeight = PixelRatio.getPixelSizeForLayoutSize(121);
 
 const SimplePage = () => {
-
-  const navigation = useNavigation(); // Initialize navigation
-
   return (
     <View style={styles.container}>
       <View style={styles.greenRectangle}>
-        <Text style={styles.centeredText}>Order</Text>
-      </View>
-      {/* first box */}
-      <View style={[styles.roundedBox, styles.firstBox]}>
-        <Text style={styles.firstBoxText}>Grocery Pickup & Delivery</Text>
-        <Text style={styles.primeText}>Exclusively for Prime members in select ZIP codes.</Text>
-        <Text style={styles.amazonText}>Shop on Amazon</Text>
-        <Image 
-            source={require('../images/firstImage.png')} // Update the path to your image
-            style={styles.boxImage}
-          />
+        <Text style={styles.centeredText}>Recipe GPT</Text>
       </View>
       
-      {/* second box */}
-      <View style={[styles.roundedBox, styles.secondBox]}>
-        <Text style={styles.firstBoxText}>Catering</Text>
-        <Text style={styles.primeText}>Mouthwatering spreads for your group. Preorder 48 hours ahead.</Text>
-        <Text style={styles.amazonText}>Preorder Now</Text>
-        <Image 
-            source={require('../images/foodTray.png')} // Update the path to your image
-            style={styles.boxImage}
-          />
-      </View>
-      {/* third box */}
-      <View style={[styles.roundedBox, styles.thirdBox]}>
-        <Text style={styles.firstBoxText}>Lunch & Dinner To-Go</Text>
-        <Text style={styles.primeText}>Freshly made sandwhiches and more. Order and enjoy same day. Available in select stores.</Text>
-        <Text style={styles.amazonText}>Order Now</Text>
-        <Image 
-            source={require('../images/pizzaImage.png')} // Update the path to your image
-            style={styles.boxImage}
-          />
-      </View>
-      {/* fourth box - now touchable */}
-      <TouchableOpacity
-        style={[styles.roundedBox, styles.fourthBox]}
-        onPress={() => navigation.navigate('CategoryPage')} // Add navigation on press
-      >
-        <Text style={styles.firstBoxText}>Shipped to You</Text>
-        <Text style={styles.primeText}>Freshly made sandwiches and more. Order and enjoy same day. Available in select stores.</Text>
-        <Text style={styles.amazonText}>Order Now</Text>
-        <Image 
-          source={require('../images/boxImage.png')} // Update the path to your image
-          style={styles.boxImage}
-        />
-      </TouchableOpacity>
       {/* Footer section with evenly spaced images */}
       <View style={styles.footer}>
         <View style={styles.footerItem}>

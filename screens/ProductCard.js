@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, ScrollView, Image } from 'react-native';
 
 const RectangleComponent = () => {
   
@@ -8,21 +8,29 @@ const RectangleComponent = () => {
       <View style={styles.greenRectangle} />
       <View style={styles.rectangle} />
       <ScrollView style={styles.scrollView}>
-      <View style={styles.anotherRectangle} />
-      <Text style={styles.text}>Whole Foods Market</Text>
-      <Text style={styles.secondaryText}>Chicken Breast 6oz</Text>
-      <View style={styles.line} />
-      <Text style={styles.price}>Chicken Breast 6oz</Text>
+        <View style={styles.anotherRectangle}>
+          {/* Image inside the rectangle */}
+          <Image 
+            source={require('../images/boxVector.png')} // Replace with the correct path to your image
+            style={styles.innerImage}
+          />
+        </View>
+          {/* Other elements */}
+          <Text style={styles.text}>Whole Foods Market</Text>
+          <Text style={styles.secondaryText}>Chicken Breast 6oz</Text>
+          <View style={styles.line} />
+          <Text style={styles.price}>Chicken Breast 6oz</Text>
+        
       </ScrollView>
       {/* footer section */}
       <View style={styles.footer}>
-      <View style={styles.bottomRectangle}>
-        <Text style={styles.listText}>Add to list</Text>
+        <View style={styles.bottomRectangle}>
+          <Text style={styles.listText}>Add to list</Text>
+        </View>
+        <TouchableOpacity style={styles.buttonRectangle}>
+          <Text style={styles.buttonText}>RecipeGPT</Text>
+        </TouchableOpacity>
       </View>
-      <TouchableOpacity style={styles.buttonRectangle}>
-        <Text style={styles.buttonText}>RecipeGPT</Text>
-      </TouchableOpacity>
-    </View>
     </View>
   );
 };
@@ -52,17 +60,22 @@ const styles = StyleSheet.create({
 
   },
   anotherRectangle: {
-    marginTop: 150, // Adjust the top margin by 30 units
-    display: 'flex', // Flex is default in React Native, so this can be omitted
-    width: 398, // width in pixels
-    height: 400, // width in pixels
-    paddingVertical: 54, // Top and bottom padding
-    paddingHorizontal: 129, // Left and right padding (average of provided values)
-    justifyContent: 'center', // Center content vertically inside the rectangle
-    alignItems: 'center', // Center content horizontally inside the rectangle
-    borderRadius: 2, // border radius for slightly rounded corners
-    backgroundColor: '#F8F7F5', // background color
+    marginTop: 150,
+    width: 398, // Ensure the width is enough to contain the image
+    height: 400, // Adjust the height as needed
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 2,
+    backgroundColor: '#F8F7F5',
+    // ... other styles ...
   },
+  innerImage: {
+    width: 100, // Adjust the width as needed
+    height: 100, // Adjust the height as needed
+    resizeMode: 'contain', // Keep the image's aspect ratio
+    marginBottom: 20, // Space between the image and the text below it
+  },
+  
   text: {
     color: '#004D35', // Text color
     fontFamily: 'SFProText', // Your font family, make sure it is included in your project

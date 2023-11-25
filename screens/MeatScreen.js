@@ -2,8 +2,13 @@ import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, ScrollView, Image } from 'react-native';
 
 const RectangleComponent = () => {
-  const categoriesFirstRow = ['Essentials', 'Meats', 'Produce', 'Beverages'];
-  const categoriesSecondRow = ['Category 5', 'Category 6', 'Category 7', 'Category 8']; // Replace with your categories
+  const imageTextPairs = [
+    { image: require('../images/boxVector.png'), text: 'Cheick Breast 6oz' },
+    { image: require('../images/boxVector.png'), text: 'Item 2' },
+    // ... Add more pairs as needed
+  ];
+
+
 
   
   return (
@@ -17,16 +22,22 @@ const RectangleComponent = () => {
       <Text style={styles.browseCategoriesText}>Browse categories</Text>
       <View style={styles.lineUnderText} />
       <Text style={styles.meatText}>Meat</Text>
-      <View style={styles.imageContainer}>
-        <Image 
-          source={require('../images/boxVector.png')} // Update path to your placeholder image
-          style={styles.imagePlaceholder} 
-        />
-        <Image 
-          source={require('../images/boxVector.png')} // Update path to your placeholder image
-          style={styles.imagePlaceholder} 
-        />
+
+      {/* New Horizontal list with image-text pairs */}
+      <View style={styles.horizontalList}>
+        {imageTextPairs.map((pair, index) => (
+          <View key={index} style={styles.imageTextContainer}>
+            <Image 
+              source={pair.image} 
+              style={styles.listImage} 
+            />
+            <Text style={styles.listItemText}>
+              {pair.text}
+            </Text>
+          </View>
+        ))}
       </View>
+
       
         {/* Footer section with evenly spaced images */}
       <View style={styles.footer}>
@@ -164,6 +175,27 @@ const styles = StyleSheet.create({
     left: -100, // Adjust this value to position the rectangle correctly
     zIndex: 1, // Ensure it's layered correctly
   },
+  horizontalList: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    width: '100%',
+    marginTop: 150,
+  },
+  imageTextContainer: {
+    alignItems: 'center', // Center align the items in the vertical stack
+  },
+  listImage: {
+    width: 50, // Adjust as needed
+    height: 50, // Adjust as needed
+    resizeMode: 'contain',
+  },
+  listItemText: {
+    color: '#000',
+    fontSize: 16,
+    textAlign: 'center', // Center the text below the image
+    marginTop: 5, // Space between the image and text, adjust as needed
+  },
   
   // Footer section
   footer: {
@@ -185,6 +217,9 @@ const styles = StyleSheet.create({
     height: 70, // Adjust the size as needed
     resizeMode: 'contain',
   },
+  meatSelector: {
+    
+  }
 });
 
 export default RectangleComponent;
