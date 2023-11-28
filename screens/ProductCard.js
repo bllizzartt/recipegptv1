@@ -1,8 +1,10 @@
 import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, ScrollView, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const RectangleComponent = () => {
-  
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <View style={styles.greenRectangle} />
@@ -27,7 +29,10 @@ const RectangleComponent = () => {
         <View style={styles.bottomRectangle}>
           <Text style={styles.listText}>Add to list</Text>
         </View>
-        <TouchableOpacity style={styles.buttonRectangle}>
+        <TouchableOpacity 
+          style={styles.buttonRectangle}
+          onPress={() => navigation.navigate('RecipeScreen')}
+        >
           <Text style={styles.buttonText}>RecipeGPT</Text>
         </TouchableOpacity>
       </View>

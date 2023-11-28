@@ -1,7 +1,9 @@
 import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, ScrollView, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const RectangleComponent = () => {
+  const navigation = useNavigation(); // This line is crucial
   const categoriesFirstRow = ['Essentials', 'Meats', 'Produce', 'Beverages'];
   const categoriesSecondRow = ['Category 5', 'Category 6', 'Category 7', 'Category 8']; // Replace with your categories
 
@@ -23,14 +25,23 @@ const RectangleComponent = () => {
         <Text style={styles.locationText}>New York, 10001</Text>
         <Text style={styles.category}>Shop By Category</Text>
       </View>
+
       <View style={styles.buttonContainer}>
           {categoriesFirstRow.map((item, index) => (
-            <TouchableOpacity key={index} style={styles.categoryButton}>
-            <Image
+            <TouchableOpacity 
+              key={index} 
+              style={styles.categoryButton}
+              onPress={() => {
+                if (item === 'Meats') {
+                  navigation.navigate('MeatScreen'); // Navigate to Meats screen when Meats category is clicked
+                }
+              }}
+            >
+              <Image
                 source={require(`../images/boxVector.png`)} // Update path to your images
                 style={styles.buttonImage}
               />
-            <Text style={styles.buttonText}>{item}</Text>
+              <Text style={styles.buttonText}>{item}</Text>
             </TouchableOpacity>
           ))}
         </View>

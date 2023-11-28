@@ -1,7 +1,9 @@
 import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, ScrollView, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const RectangleComponent = () => {
+  const navigation = useNavigation();
   const imageTextPairs = [
     { image: require('../images/boxVector.png'), text: 'Cheick Breast 6oz' },
     { image: require('../images/boxVector.png'), text: 'Item 2' },
@@ -26,15 +28,14 @@ const RectangleComponent = () => {
       {/* New Horizontal list with image-text pairs */}
       <View style={styles.horizontalList}>
         {imageTextPairs.map((pair, index) => (
-          <View key={index} style={styles.imageTextContainer}>
-            <Image 
-              source={pair.image} 
-              style={styles.listImage} 
-            />
-            <Text style={styles.listItemText}>
-              {pair.text}
-            </Text>
-          </View>
+          <TouchableOpacity 
+            key={index} 
+            style={styles.imageTextContainer}
+            onPress={() => navigation.navigate('ProductCard', { item: pair })}
+          >
+            <Image source={pair.image} style={styles.listImage} />
+            <Text style={styles.listItemText}>{pair.text}</Text>
+          </TouchableOpacity>
         ))}
       </View>
 
