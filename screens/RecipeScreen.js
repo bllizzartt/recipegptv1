@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, Image, ScrollView, ActivityIndicator } from 'react-native';
 import { PixelRatio } from 'react-native';
-import axios from 'axios'; // Make sure to install axios or your preferred HTTP client
+import Axios from 'axios';
+import createChatCompletion from './OpenAi'; // Import your API function
+// const createChatCompletion = require('./OpenAi'); // Adjust the path if necessary
 // import { useNavigation } from '@react-navigation/native';
-import fetchOpenAICompletion from './OpenAi'; // Adjust the path as necessary
 
 const pixelWidth = PixelRatio.getPixelSizeForLayoutSize(398);
 const pixelHeight = PixelRatio.getPixelSizeForLayoutSize(121);
@@ -11,35 +12,36 @@ const pixelHeight = PixelRatio.getPixelSizeForLayoutSize(121);
 const SimplePage = () => {
   // const navigation = useNavigation();
   const [recipe, setRecipe] = useState('');
+  const [error, setError] = useState(null); // Declare error state
 
-
-
-  // useEffect(() => {
-  //   (async function fetchRecipe(){
-  //     try {
-  //       const response = await axios.post('https://api.openai.com/v1/chat/completions', {
-  //         model: "gpt-3.5-turbo",
-  //         messages: [{ role: "user", content: "what is a food I can make with chicken breast?" }],
-  //         temperature: 0.7
-  //       }, {
-  //         headers: {
-  //           'Authorization': `Bearer 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`,
-  //           'Content-Type': 'application/json'
-  //         }
-  //       });
-  //       console.log(response)
   
-  //       if (response.data && response.data.choices && response.data.choices.length > 0) {
-  //         const recipeText = response.data.choices[0].text.trim();
-  //         setRecipe(recipeText);
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching recipe:", error);
-  //       // Handle error accordingly
-  //     }
-  //   })()
-   
-  // }, []);
+
+  const getRecipe = async () => {
+    const messages = [
+      { role: "user", content: "What is one dish I can make with chicken breasts?" },
+    ];
+
+    const options = {
+      temperature: 0.8,
+      max_tokens: 100,
+    };
+
+    try {
+      const choices = await createChatCompletion(messages, options);
+      if (choices && choices.length > 0) {
+        setRecipe(choices[0].message.content); // Update the state with the recipe
+      } else {
+        console.log("No response from OpenAI.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setError(error.message || 'An error occurred'); // Set the error
+    }
+  };
+
+  useEffect(() => {
+    getRecipe();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -69,7 +71,7 @@ const SimplePage = () => {
       </View>
 
       
-
+      {error && <Text style={styles.errorText}>Error: {error}</Text>}
       {/* Recipe text box in the center */}
       <ScrollView style={styles.recipeBox}>
         <Text style={styles.recipeText}>{recipe || 'Loading recipe...'}</Text>
@@ -195,6 +197,18 @@ const styles = StyleSheet.create({
   //   right: 0, // Distance from the right edge of the firstBox
   //   top: -7, // Adjust this value to move the image upwards
   // },
+  recipeBox: {
+    marginTop: 20,
+    padding: 10,
+    width: '100%',
+    backgroundColor: '#f0f0f0',
+    borderRadius: 10,
+  },
+  recipeText: {
+    fontSize: 16,
+    color: '#333',
+    textAlign: 'center',
+  },
 
 
 
@@ -218,6 +232,12 @@ const styles = StyleSheet.create({
     width: 70, // Adjust the size as needed
     height: 70, // Adjust the size as needed
     resizeMode: 'contain',
+  },
+  errorText: {
+    color: 'red', // Or any style you prefer
+    fontSize: 16,
+    textAlign: 'center',
+    marginTop: 20,
   },
   
   // ... other styles remain the same

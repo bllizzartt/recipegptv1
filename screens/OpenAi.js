@@ -1,5 +1,5 @@
-const dotenv = require("dotenv");
-dotenv.config({ path: "./process.env" });
+// const dotenv = require("dotenv");
+// dotenv.config(); // Assuming .env is in your project root
 
 const axios = require("axios");
 
@@ -7,7 +7,7 @@ const openai = axios.create({
   baseURL: "https://api.openai.com/v1",
   headers: {
     "Content-Type": "application/json",
-    "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
+    "Authorization": `Bearer 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`, // Use the API key from .env
   },
 });
 
@@ -21,14 +21,14 @@ async function createChatCompletion(messages, options = {}) {
 
     return response.data.choices;
   } catch (error) {
-    console.error("Error creating chat completion:", error);
-    return null; // Return null or handle the error appropriately
+    console.error("Error creating chat completion:", error.response ? error.response.data : error);
+    return null;
   }
 }
 
 async function main() {
   const messages = [
-    { role: "user", content: "How are you?" },
+    { role: "user", content: "What is one dish I can make with chicken breasts? please give a response of the title of the dish, not the ingredients" },
   ];
 
   const options = {
@@ -38,7 +38,13 @@ async function main() {
 
   const choices = await createChatCompletion(messages, options);
 
-  // console.log(choices[0].message);
+  if (choices) {
+    console.log(choices[0].message);
+  } else {
+    console.log("No response from OpenAI.");
+  }
 }
 
 main();
+
+export default createChatCompletion;
