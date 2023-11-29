@@ -1,32 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { View, StyleSheet, Text, Image, ScrollView, ActivityIndicator } from 'react-native';
 import { PixelRatio } from 'react-native';
 import axios from 'axios'; // Make sure to install axios or your preferred HTTP client
 // import { useNavigation } from '@react-navigation/native';
-
+import fetchOpenAICompletion from './OpenAi'; // Adjust the path as necessary
 
 const pixelWidth = PixelRatio.getPixelSizeForLayoutSize(398);
 const pixelHeight = PixelRatio.getPixelSizeForLayoutSize(121);
 
 const SimplePage = () => {
-  // // const navigation = useNavigation();
-  // const [recipe, setRecipe] = useState('');
+  // const navigation = useNavigation();
+  const [recipe, setRecipe] = useState('');
 
 
 
   // useEffect(() => {
   //   (async function fetchRecipe(){
   //     try {
-  //       const response = await axios.post('https://api.openai.com/v1/engines/davinci/completions', {
-  //         prompt: "what is a food I can make with chicken breast?",
-  //         max_tokens: 50,
-  //         temperature: 0.1,
-  //         // model: "gpt-3.5-turbo-1106",
-          
+  //       const response = await axios.post('https://api.openai.com/v1/chat/completions', {
+  //         model: "gpt-3.5-turbo",
+  //         messages: [{ role: "user", content: "what is a food I can make with chicken breast?" }],
+  //         temperature: 0.7
   //       }, {
   //         headers: {
-  //           'Authorization': `Bearer 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`,
-  //           // 'Content-Type': 'application/json'
+  //           'Authorization': `Bearer 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`,
+  //           'Content-Type': 'application/json'
   //         }
   //       });
   //       console.log(response)
@@ -70,11 +68,12 @@ const SimplePage = () => {
           />
       </View>
 
+      
 
-      {/* Recipe text box in the center
+      {/* Recipe text box in the center */}
       <ScrollView style={styles.recipeBox}>
         <Text style={styles.recipeText}>{recipe || 'Loading recipe...'}</Text>
-      </ScrollView> */}
+      </ScrollView>
       
       {/* Footer section with evenly spaced images */}
       <View style={styles.footer}>
