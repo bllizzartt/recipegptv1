@@ -1,5 +1,5 @@
 const dotenv = require("dotenv");
-dotenv.config();
+dotenv.config({ path: "./process.env" });
 
 const axios = require("axios");
 
@@ -22,6 +22,7 @@ async function createChatCompletion(messages, options = {}) {
     return response.data.choices;
   } catch (error) {
     console.error("Error creating chat completion:", error);
+    return null; // Return null or handle the error appropriately
   }
 }
 
@@ -37,7 +38,7 @@ async function main() {
 
   const choices = await createChatCompletion(messages, options);
 
-  console.log(choices[0].message);
+  // console.log(choices[0].message);
 }
 
 main();
