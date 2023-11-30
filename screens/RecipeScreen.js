@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, Image, ScrollView, ActivityIndicator } from 'react-native';
 import { PixelRatio } from 'react-native';
-import Axios from 'axios';
-import createChatCompletion from './OpenAi'; // Import your API function
-// const createChatCompletion = require('./OpenAi'); // Adjust the path if necessary
-// import { useNavigation } from '@react-navigation/native';
+
+import {createChatCompletion} from './OpenAi.js'; // Import your API function
+
 
 const pixelWidth = PixelRatio.getPixelSizeForLayoutSize(398);
 const pixelHeight = PixelRatio.getPixelSizeForLayoutSize(121);
@@ -18,7 +17,7 @@ const SimplePage = () => {
 
   const getRecipe = async () => {
     const messages = [
-      { role: "user", content: "What is one dish I can make with chicken breasts?" },
+      { role: "user", content: "Give me 1 dish I can make with raw chicken breast. For each dish, provide the title of the meal, the approximate cooking time, and the average calories." },
     ];
 
     const options = {
@@ -28,6 +27,7 @@ const SimplePage = () => {
 
     try {
       const choices = await createChatCompletion(messages, options);
+      console.log(choices)
       if (choices && choices.length > 0) {
         setRecipe(choices[0].message.content); // Update the state with the recipe
       } else {

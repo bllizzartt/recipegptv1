@@ -1,17 +1,14 @@
-// const dotenv = require("dotenv");
-// dotenv.config(); // Assuming .env is in your project root
-
-const axios = require("axios");
+import axios from 'axios'
 
 const openai = axios.create({
   baseURL: "https://api.openai.com/v1",
   headers: {
     "Content-Type": "application/json",
-    "Authorization": `Bearer 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`, // Use the API key from .env
+    "Authorization": `Bearer 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`,
   },
 });
 
-async function createChatCompletion(messages, options = {}) {
+export async function createChatCompletion(messages, options = {}) {
   try {
     const response = await openai.post("/chat/completions", {
       model: options.model || "gpt-4",
@@ -28,7 +25,7 @@ async function createChatCompletion(messages, options = {}) {
 
 async function main() {
   const messages = [
-    { role: "user", content: "What is one dish I can make with chicken breasts? please give a response of the title of the dish, not the ingredients" },
+    { role: "user", content: "what is 2 + 2" },
   ];
 
   const options = {
@@ -44,7 +41,3 @@ async function main() {
     console.log("No response from OpenAI.");
   }
 }
-
-main();
-
-export default createChatCompletion;
