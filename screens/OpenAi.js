@@ -4,7 +4,7 @@ const openai = axios.create({
   baseURL: "https://api.openai.com/v1",
   headers: {
     "Content-Type": "application/json",
-    "Authorization": `Bearer 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`,
+    "Authorization": `Bearer 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`,
   },
 });
 
