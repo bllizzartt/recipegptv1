@@ -17,7 +17,7 @@ const SimplePage = () => {
 
   const getRecipe = async () => {
     const messages = [
-      { role: "user", content: "Give me 1 dish I can make with raw chicken breast. For each dish, provide the title of the meal, the approximate cooking time, and the average calories."},
+      { role: "user", content: "Give me 5 dish I can make using chicken breast. give me the title only"},
     ];
 
     const options = {
